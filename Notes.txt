@@ -1,0 +1,10 @@
+@SpringBootApplication is a combination of:@Configuration, @EnableAutoConfiguration, @ComponentScan
+
+@ComponentScan: By default, it scans for components (@Controller, @Service, @Repository, etc.) in the same package and sub-packages
+
+dependency injection: 
+@Component
+@Service
+@Repository (Data access)
+@Controller (MVC Controller)
+@RestController (REST APIs)
