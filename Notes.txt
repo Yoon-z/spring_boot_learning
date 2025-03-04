@@ -8,3 +8,34 @@ dependency injection:
 @Repository (Data access)
 @Controller (MVC Controller)
 @RestController (REST APIs)
+
+@SessionAttributes
+
+
+<form:form method="post" modelAttribute="todo">
+		<fieldset class="mb-3">				
+			<form:label path="description">Description</form:label>
+			<form:input type="text" path="description" required="required"/>
+			<form:errors path="description" cssClass="text-warning"/>
+		</fieldset>        expain modelAttribute, form:errors, path
+</form:form>
+1.modelAttribute="todo" means that the form is bound to an object named "todo" in the Model.
+@GetMapping("/add-todo")
+public String showTodoForm(Model model) {
+    model.addAttribute("todo", new Todo());
+    return "todo-form";
+}
+2.The path attribute binds the form field to a specific property of the modelAttribute.
+<form:input path="description" />
+This means the input is connected to the description field of the Todo object.
+
+
+public void deleteById(int id) {
+	// todo.getId() == id
+	// todo -> todo.getId() == id
+	Predicate<? super Todo> predicate = todo -> todo.getId() == id;
+	todos.removeIf(predicate);
+} 
+removeIf() is a default method added in Java 8 to the Collection interface
+It removes all elements from the collection that match a given condition (called a predicate).
+collection.removeIf(element -> condition);
